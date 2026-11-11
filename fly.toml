@@ -1,0 +1,36 @@
+# Fly.io config. Change `app` to a unique name before the first deploy.
+# First time:
+#   fly launch --no-deploy --copy-config
+#   fly volumes create elevator_data --size 1
+#   fly secrets set ADMIN_TOKEN=... SECRET_KEY=...
+#   fly deploy
+app = "internet-elevator"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  DICE_POOL_MODE = "auto"
+
+[mounts]
+  source = "elevator_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    grace_period = "10s"
+    interval = "30s"
+    method = "GET"
+    path = "/api/health"
+    timeout = "5s"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"

@@ -1,0 +1,51 @@
+{
+  "minFloor": -100,
+  "maxFloor": 10000,
+  "palette": [
+    "#1a1c2c", "#5d275d", "#b13e53", "#ef7d57",
+    "#ffcd75", "#a7f070", "#38b764", "#257179",
+    "#29366f", "#3b5dc9", "#41a6f6", "#73eff7",
+    "#f4f4f4", "#94b0c2", "#566c86", "#8a5a3c"
+  ],
+  "wallpapers": [
+    {"name": "Cream", "color": "#f3e9d2"},
+    {"name": "Sage", "color": "#b8c8a8"},
+    {"name": "Dusty rose", "color": "#d9a5a0"},
+    {"name": "Sky", "color": "#a9cbe0"},
+    {"name": "Mustard", "color": "#d8b45a"},
+    {"name": "Mint", "color": "#bfe3cf"},
+    {"name": "Lavender", "color": "#c4b5d9"},
+    {"name": "Terracotta", "color": "#c47a5a"},
+    {"name": "Slate", "color": "#6b7a8f"},
+    {"name": "Forest", "color": "#3f5e4a"},
+    {"name": "Midnight", "color": "#2b2d4a"},
+    {"name": "Charcoal", "color": "#3a3a3a"}
+  ],
+  "objects": ["plant", "lamp", "cat", "radio", "bed", "chair", "bookshelf", "clock", "rug", "fishbowl", "guitar", "tv"],
+  "limits": {
+    "name": 40,
+    "message": 280,
+    "note": 80,
+    "graffiti": 60,
+    "objects": 3,
+    "notesShown": 30,
+    "graffitiShown": 20,
+    "gridSize": 32
+  },
+  "windowBands": [
+    {"max": 50, "view": "street"},
+    {"max": 500, "view": "skyline"},
+    {"max": 3000, "view": "clouds"},
+    {"max": 9000, "view": "thin"},
+    {"max": 10000, "view": "stars"}
+  ],
+  "special": {
+    "0": "lobby",
+    "13": "missing",
+    "404": "brick",
+    "10000": "roof"
+  },
+  "dust": {"cobwebDays": 30, "reclaimDays": 90},
+  "breakdownChance": 0.02,
+  "reportsToHide": 3
+}

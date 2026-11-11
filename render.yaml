@@ -1,0 +1,28 @@
+# Render Blueprint: one free Docker web service plus a free Postgres database.
+# Deploy: https://render.com/deploy?repo=https://github.com/arnav029/Elevator
+databases:
+  - name: elevator-db
+    plan: free
+    databaseName: elevator
+    user: elevator
+
+services:
+  - type: web
+    name: internet-elevator
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: elevator-db
+          property: connectionString
+      - key: ADMIN_TOKEN
+        generateValue: true
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DICE_POOL_MODE
+        value: auto
+      - key: TRUST_PROXY
+        value: "true"

@@ -1,0 +1,23 @@
+# Full stack with Postgres and Redis: `docker compose up --build`, then open http://localhost:8080
+services:
+  app:
+    build: .
+    ports: ["8080:8080"]
+    environment:
+      DATABASE_URL: postgresql://elevator:elevator@db:5432/elevator
+      REDIS_URL: redis://redis:6379/0
+      ADMIN_TOKEN: change-me
+      SECRET_KEY: change-me-too
+      TRUST_PROXY: "false"
+    depends_on: [db, redis]
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: elevator
+      POSTGRES_PASSWORD: elevator
+      POSTGRES_DB: elevator
+    volumes: [pgdata:/var/lib/postgresql/data]
+  redis:
+    image: redis:7-alpine
+volumes:
+  pgdata:
